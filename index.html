@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hymn Book</title>
+    <!-- Favicon: Maroon Bible SVG -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='10' y='8' width='44' height='48' rx='6' fill='maroon'/%3E%3Crect x='16' y='16' width='32' height='32' rx='2' fill='white'/%3E%3Crect x='20' y='20' width='24' height='24' rx='1' fill='maroon'/%3E%3Crect x='29' y='28' width='6' height='16' rx='1' fill='white'/%3E%3Crect x='24' y='35' width='16' height='2' rx='1' fill='white'/%3E%3C/svg%3E">
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Theme toggle button (top right corner) -->
+    <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+
+    <!-- Search bar container (top left corner) -->
+    <div class="search-container">
+        <!-- Search input for hymn title or lyrics -->
+        <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search hymns..." 
+            aria-label="Search hymns"
+            autocomplete="off"
+        >
+        <!-- Button to clear the search input -->
+        <button 
+            id="search-clear" 
+            aria-label="Clear search" 
+            title="Clear search"
+        >✖</button>
+    </div>
+
+    <!-- Main heading -->
+    <h1>Melodies of Praise</h1>
+
+    <!-- Hymn list (populated and filtered by JS) -->
+    <ul class="hymn-list" id="hymn-list">
+        <!-- Hymn items will be rendered here by script.js -->
+    </ul>
+
+    <!-- Hymn details section (shown when a hymn is selected) -->
+    <div id="hymn-details" class="hymn-details">
+        <h2 id="hymn-title"></h2>
+        <p id="hymn-lyrics"></p>
+        <!-- Back button to return to hymn list -->
+        <button onclick="hideHymn()">Back</button>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+git remote add origin https://github.com/skepticaldude/hymn-app.git
+git branch -M main
+git push -u origin main

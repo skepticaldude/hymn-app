@@ -1,0 +1,305 @@
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #222;
+    --accent-color: #007bff;
+    --list-hover: #e0e0e0;
+    --details-bg: #fff;
+    --button-bg: #007bff;
+    --button-text: #fff;
+    --transition: 0.4s cubic-bezier(.4,0,.2,1);
+    --search-bg: #fff;
+    --search-border: #ccc;
+    --search-focus: #007bff33;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    transition: background var(--transition), color var(--transition);
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform var(--transition);
+    z-index: 100;
+}
+
+#theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.search-container {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    z-index: 101;
+}
+
+#search-input {
+    padding: 8px 36px 8px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--search-border);
+    background: var(--search-bg);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+    color: var(--text-color);
+    width: 180px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+#search-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--search-focus);
+    background: #f7faff;
+}
+
+#search-clear {
+    position: absolute;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+#search-input:not(:placeholder-shown) ~ #search-clear {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    transition: color var(--transition);
+}
+
+.hymn-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.hymn-list li {
+    margin: 12px 0;
+    padding: 12px 18px;
+    cursor: pointer;
+    color: var(--accent-color);
+    background: var(--details-bg);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.hymn-list li:hover, .hymn-list li:focus {
+    background: var(--list-hover);
+    color: #0056b3;
+    outline: none;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.hymn-list li:active,
+.hymn-list li.touch-active {
+    background: #d0e7ff;
+    color: #0056b3;
+    transition: background 0.1s, color 0.1s;
+}
+
+button:active,
+button.touch-active {
+    filter: brightness(0.9);
+    transition: filter 0.1s;
+}
+
+.hymn-details {
+    display: none;
+    opacity: 0;
+    max-width: 500px;
+    margin: 40px auto 0 auto;
+    background: var(--details-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 28px;
+    text-align: center;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity var(--transition), transform var(--transition), background var(--transition), color var(--transition);
+    pointer-events: none;
+}
+
+.hymn-details.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.hymn-details h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    color: var(--accent-color);
+    transition: color var(--transition);
+}
+
+.hymn-details p {
+    font-size: 1.1rem;
+    margin: 24px 0;
+    color: var(--text-color);
+    transition: color var(--transition);
+}
+
+.hymn-details button {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.hymn-details button:hover, #theme-toggle:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+#hymn-lyrics {
+    white-space: pre-line; /* Preserve line breaks and spacing */
+    font-size: 1.1rem;
+    margin: 24px 0;
+    color: var(--text-color);
+    transition: color var(--transition);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+}
+
+.hymn-lyrics-row {
+    background: var(--details-bg);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    margin-bottom: 10px;
+    padding: 18px 18px 10px 18px;
+    animation: fadeIn 0.3s;
+}
+
+.close-hymn-btn {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    padding: 7px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+
+.close-hymn-btn:hover {
+    background: #0056b3;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    --bg-color: #181a1b;
+    --text-color: #f4f4f4;
+    --accent-color: #4da3ff;
+    --list-hover: #23272a;
+    --details-bg: #23272a;
+    --button-bg: #222e3c;
+    --button-text: #f4f4f4;
+    --search-bg: #23272a;
+    --search-border: #444;
+    --search-focus: #4da3ff33;
+}
+
+body.dark-mode .hymn-list li:hover, 
+body.dark-mode .hymn-list li:focus {
+    color: #4da3ff;
+    background: #181a1b;
+}
+
+body.dark-mode #search-input {
+    background: var(--search-bg);
+    color: var(--text-color);
+    border-color: var(--search-border);
+}
+
+body.dark-mode #search-input:focus {
+    background: #23272a;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 1rem;
+        padding: 0 2vw;
+    }
+    .search-container {
+        position: static;
+        margin: 16px auto 0 auto;
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px; /* Add spacing between search bar and clear button */
+    }
+    #search-input {
+        width: 70vw;
+        min-width: 0;
+        font-size: 1.1rem;
+    }
+    .hymn-list {
+        max-width: 98vw;
+        font-size: 1.05rem;
+    }
+    .hymn-lyrics-row {
+        padding: 12px 8px 8px 8px;
+        font-size: 1rem;
+    }
+    #theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+        position: absolute;
+        /* Add margin to separate from search bar */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    /* Add spacing between theme toggle and search bar */
+    .search-container {
+        margin-top: 56px; /* Push search bar below the toggle button */
+    }
+}
